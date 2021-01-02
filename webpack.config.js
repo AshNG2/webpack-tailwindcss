@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const prod = process.env.NODE_ENV === 'production';
 
@@ -39,10 +40,18 @@ const config = {
     ],
   },
   plugins: [
+    new BrowserSyncPlugin({
+      host: 'localhost',
+      port: 3000,
+      server: path.resolve(__dirname, 'app'),
+    }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css'
     }),
-    new CopyPlugin({ patterns: [{ from: 'src/index.html', to: '../views/pages/index.html' }] })
+    new CopyPlugin({ patterns: [
+        { from: 'src/*.html', to: '../[name].html' },
+        //{ from: 'src/img/', to: 'img', toType: 'dir' },
+      ], })
   ],
   mode: prod ? 'production' : 'development'
 };
