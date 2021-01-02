@@ -14,12 +14,12 @@ const config = {
     chunkFilename: 'js/[name].[chunkhash:3].js',
     path: path.resolve('app/assets')
   },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'app'),
-    watchContentBase: true,
-    writeToDisk: true,
-    open: true
-  },
+  // devServer: {
+  //   contentBase: path.resolve(__dirname, 'app'),
+  //   watchContentBase: true,
+  //   writeToDisk: true,
+  //   open: true,
+  // },
   module: {
     rules: [
       {
